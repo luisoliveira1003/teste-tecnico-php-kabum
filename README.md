@@ -48,11 +48,18 @@ $ docker-compose -d
 
 ### 🔗 Informações de acesso
 
-Para acessar a aplicação utilize os acessos abaixo:
+
+Para acessar a aplicação utilize: http://localhost:8000 e os acessos abaixo:
 
 Usuário: kabum
 
 Senha: ninja
+
+Para acessar o phpmyadmin utilize: http://localhost:8080 e os acessos abaixo:
+
+Usuário: root
+
+Senha: root
 
 &nbsp;
 
