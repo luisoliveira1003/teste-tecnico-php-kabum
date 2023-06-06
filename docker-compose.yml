@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  apache:
+    build: ./dockerfiles/apache/.
+    container_name: webserver-php
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+    env_file:
+      - ./development.env
+    depends_on:
+      - database
+    links:
+      - database
+    environment:
+      DB_HOST: database
+
+  database:
+    container_name: database
+    build: ./dockerfiles/mysql/.
+    restart: always
+    ports:
+      - "3307:3307"
+    env_file:
+      - ./development.env
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+    links:
+      - database
+    env_file:
+      - ./development.env
